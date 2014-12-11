@@ -3,13 +3,46 @@ var LinkedList = function(){
   list.head = null;
   list.tail = null;
 
+  // Complexity = O(1);
   list.addToTail = function(value){
+    var node = Node(value);
+    if(list.tail){
+      list.tail.next = node;
+    } else {
+      list.head = node;
+    }
+    list.tail = node;
   };
 
+  // Complexty = O(1);
   list.removeHead = function(){
+    // var currentHead = list.head;
+    // if (list.head) {
+    //   list.head = list.head.next;
+    // }
+    // return currentHead.value;
+    //
+    var currentHead = list.head;
+    var currentValue = null;
+    if (currentHead) {
+      list.head = currentHead.next;
+      currentValue = currentHead.value;
+    }
+    return currentValue;
   };
 
+  // Complexty = O(n);
   list.contains = function(target){
+    var node = list.head;
+    while(true){
+      if(node.value === target){
+        return true;
+      }
+      if(node === list.tail){
+        return false;
+      }
+      node = node.next;
+    }
   };
 
   return list;

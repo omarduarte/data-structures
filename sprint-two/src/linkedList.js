@@ -16,12 +16,6 @@ var LinkedList = function(){
 
   // Complexty = O(1);
   list.removeHead = function(){
-    // var currentHead = list.head;
-    // if (list.head) {
-    //   list.head = list.head.next;
-    // }
-    // return currentHead.value;
-    //
     var currentHead = list.head;
     var currentValue = null;
     if (currentHead) {
@@ -44,7 +38,6 @@ var LinkedList = function(){
       node = node.next;
     }
   };
-
   return list;
 };
 

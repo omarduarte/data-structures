@@ -16,8 +16,12 @@ Graph.prototype.contains = function(node){
 };
 
 Graph.prototype.removeNode = function(node){
-  var key = JSON.stringify(node);
-  if (this.nodes[key]) {
+  if (this.contains(node)) {
+    var key = JSON.stringify(node);
+    var connections = this.nodes[key].connections;
+    for(var connection in connections){
+      this.removeEdge(node, connections[connection]);
+    }
     delete this.nodes[key];
   }
 };

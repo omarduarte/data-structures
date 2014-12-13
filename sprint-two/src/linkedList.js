@@ -2,7 +2,6 @@ var LinkedList = function(){
   var list = {};
   list.head = null;
   list.tail = null;
-  list.previousTail = null;
 
 
   // Complexity = O(1);
@@ -10,7 +9,7 @@ var LinkedList = function(){
     var node = Node(value);
     if(list.tail){
       list.tail.next = node;
-      list.previousTail = list.tail;
+      node.previous = list.tail;
     } else {
       list.head = node;
     }
@@ -43,7 +42,10 @@ var LinkedList = function(){
     var currentValue = null;
     if(currentTail){
       currentValue = currentTail.value;
-      list.tail = currentTail.previousTail;
+      list.tail = currentTail.previous;
+      if(list.tail){
+      list.tail.next = null;
+      }
     }
     return currentValue;
   };
@@ -69,6 +71,7 @@ var Node = function(value){
 
   node.value = value;
   node.next = null;
+  node.previous = null;
 
   return node;
 };

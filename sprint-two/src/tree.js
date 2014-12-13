@@ -4,16 +4,17 @@ var Tree = function(value){
   newTree.value = value;
   // your code here
   newTree.children = [];  // fix me
-
+  newTree.parent = null;
   return newTree;
 };
 
 var treeMethods = {};
 
 // Complexity = O(1)
-treeMethods.addChild = function(value){
-  var node = Tree(value);
+treeMethods.addChild = function(val){
+  var node = Tree(val);
   this.children.push(node);
+  // node.parent = this.newTree.value;
 };
 
 // Complexity = O(n)

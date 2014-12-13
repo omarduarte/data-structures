@@ -16,6 +16,13 @@ describe('linkedList', function() {
     expect(linkedList.contains).to.be.a("function");
   });
 
+ it('should designate a new head when new nodes are added', function(){
+    linkedList.addToHead(4);
+    expect(linkedList.head.value).to.equal(4);
+    linkedList.addToHead(5);
+    expect(linkedList.head.value).to.equal(5);
+  });
+
   it('should designate a new tail when new nodes are added', function(){
     linkedList.addToTail(4);
     expect(linkedList.tail.value).to.equal(4);
@@ -29,6 +36,14 @@ describe('linkedList', function() {
     expect(linkedList.head.value).to.equal(4);
     linkedList.removeHead();
     expect(linkedList.head.value).to.equal(5);
+  });
+
+it('should remove the tail from the list when removeTail is called', function(){
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    expect(linkedList.tail.value).to.equal(5);
+    linkedList.removeTail();
+    expect(linkedList.tail.value).to.equal(4);
   });
 
   it("should return the value of the former head when removeHead is called", function(){

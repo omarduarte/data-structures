@@ -58,4 +58,18 @@ describe('tree', function() {
     expect(child.parent).to.equal(null);
   });
 
+  it('Apply callback on all nodes', function(){
+    var total = 0;
+    var nodeSum = function(value){
+      total += value;
+    };
+    var tree = Tree(1);
+    tree.addChild(5);
+    tree.addChild(6);
+    tree.traverse(nodeSum);
+    expect(total).to.equal(12);
+  });
+
+
+
 });

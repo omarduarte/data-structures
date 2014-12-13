@@ -32,6 +32,7 @@ treeMethods.contains = function(target, tree){
   return found;
 };
 
+// Complexity = O(n)
 treeMethods.removeFromParent = function() {
   var siblings = this.parent.children;
   for (var i = 0 ; i < siblings.length; i++) {
@@ -40,10 +41,17 @@ treeMethods.removeFromParent = function() {
       break;
     }
   }
-
   this.parent = null;
-
 };
+
+treeMethods.traverse = function(cb){
+  cb(this.value);
+
+  for (var i = 0; i < this.children.length; i++) {
+    this.children[i].traverse(cb);
+  }
+};
+
 
 /*
  * Complexity: What is the time complexity of the above functions?

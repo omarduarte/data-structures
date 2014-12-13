@@ -49,7 +49,7 @@ var methods = {
 
     return result;
   },
-  //O(log n)
+  //O(n)
   depthFirstLog: function(cb) {
     cb(this.value);
     if(this.right){

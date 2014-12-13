@@ -4,17 +4,17 @@ var Graph = function(){
 };
 
 Graph.prototype.nodes = {};
-
+//O(1)
 Graph.prototype.addNode = function(node){
   var key = JSON.stringify(node);
   this.nodes[key] = {value: node, connections: {}};
 };
-
+//O(1)
 Graph.prototype.contains = function(node){
   var key = JSON.stringify(node);
   return !!this.nodes[key];
 };
-
+//O(n)
 Graph.prototype.removeNode = function(node){
   if (this.contains(node)) {
     var key = JSON.stringify(node);
@@ -25,7 +25,7 @@ Graph.prototype.removeNode = function(node){
     delete this.nodes[key];
   }
 };
-
+//O(1)
 Graph.prototype.hasEdge = function(fromNode, toNode){
   var fromKey = JSON.stringify(fromNode);
   var toKey = JSON.stringify(toNode);
@@ -37,7 +37,7 @@ Graph.prototype.hasEdge = function(fromNode, toNode){
 
   return false;
 };
-
+//O(1)
 Graph.prototype.addEdge = function(fromNode, toNode){
   var fromKey = JSON.stringify(fromNode);
   var toKey = JSON.stringify(toNode);
@@ -46,7 +46,7 @@ Graph.prototype.addEdge = function(fromNode, toNode){
     this.nodes[toKey].connections[fromKey] = fromNode;
   }
 };
-
+//O(1)
 Graph.prototype.removeEdge = function(fromNode, toNode){
   if(this.hasEdge(fromNode, toNode)){
     var fromKey = JSON.stringify(fromNode);
@@ -55,7 +55,7 @@ Graph.prototype.removeEdge = function(fromNode, toNode){
     delete this.nodes[toKey].connections[fromKey];
   }
 };
-
+//O(n)
 Graph.prototype.forEachNode = function(cb){
   for(var key in this.nodes){
     cb(this.nodes[key].value);

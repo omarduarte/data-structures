@@ -18,6 +18,8 @@ describe('tree', function() {
 
    it('should add children node to parent of the tree', function() {
     expect(tree.parent).to.equal(null);
+    tree.addChild(10);
+    expect(tree.children[0].parent).to.equal(tree);
   });
 
   it('should return true for a value that the tree contains', function(){
@@ -43,6 +45,17 @@ describe('tree', function() {
     tree.children[1].addChild(8);
     expect(tree.contains(7)).to.equal(true);
     expect(tree.contains(8)).to.equal(true);
+  });
+
+  it('removes child from parents', function(){
+    tree.addChild(5);
+    tree.addChild(6);
+
+    var child = tree.children[0];
+    expect(child.parent).to.equal(tree);
+    child.removeFromParent();
+    expect(tree.children.length).to.equal(1);
+    expect(child.parent).to.equal(null);
   });
 
 });

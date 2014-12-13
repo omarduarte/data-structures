@@ -12,15 +12,16 @@ var treeMethods = {};
 
 // Complexity = O(1)
 treeMethods.addChild = function(val){
-  var node = Tree(val);
-  this.children.push(node);
-  // node.parent = this.newTree.value;
+  var child = Tree(val);
+  this.children.push(child);
+  child.parent = this;
 };
 
 // Complexity = O(n)
 treeMethods.contains = function(target, tree){
   var found = false;
   var tree = tree || this;
+
   if (tree.value === target){
     found = true;
   } else {
@@ -31,6 +32,18 @@ treeMethods.contains = function(target, tree){
   return found;
 };
 
+treeMethods.removeFromParent = function() {
+  var siblings = this.parent.children;
+  for (var i = 0 ; i < siblings.length; i++) {
+    if (siblings[i] === this) {
+      siblings.splice(i, 1);
+      break;
+    }
+  }
+
+  this.parent = null;
+
+};
 
 /*
  * Complexity: What is the time complexity of the above functions?

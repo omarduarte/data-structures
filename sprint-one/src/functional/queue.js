@@ -1,11 +1,10 @@
 var Queue = function(){
   var someInstance = {};
 
-  // Use an object with numeric keys to store values
   var storage = {};
 
-  // Implement the methods below
-
+  // We're keeping track of the placement of the values through
+  // these indexes. They represent the back and front of the queue.
   var indexBack = 0;
   var indexFront = 0;
 
@@ -15,7 +14,7 @@ var Queue = function(){
   };
 
   someInstance.dequeue = function(){
-    if(someInstance.size() > 0){
+    if (someInstance.size() > 0) {
       var current = storage[indexFront];
       delete storage[indexFront];
       indexFront++;
@@ -29,8 +28,3 @@ var Queue = function(){
 
   return someInstance;
 };
-
-//{0: 'Yo'} indexBack === 1
-//{0: 'Yo', 1: 'Hi'} indexBack === 2
-  //0: 'Yo'
-//{1: 'Hi'} indexBack === 2, indexFront === 1

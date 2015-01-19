@@ -1,4 +1,5 @@
 var BinarySearchTree = function(value) {
+  
   var bst = {
     value: value,
     left: undefined,
@@ -10,13 +11,15 @@ var BinarySearchTree = function(value) {
   return bst;
 };
 
+
 var methods = {
+
   //O(log n)
   insert: function(newValue) {
     var newTree = BinarySearchTree(newValue);
 
     if (this.value < newTree.value) {
-      if(this.right){
+      if (this.right) {
         this.right.insert(newValue);
       } else {
         this.right = newTree;
@@ -30,6 +33,7 @@ var methods = {
       }
     }
   },
+
   //O(log n)
   contains: function(target) {
     if (this.value === target) {
@@ -49,16 +53,18 @@ var methods = {
 
     return result;
   },
+
   //O(n)
   depthFirstLog: function(cb) {
     cb(this.value);
-    if(this.right){
+    if(this.right) {
       this.right.depthFirstLog(cb);
     }
-    if(this.left){
+    if (this.left) {
       this.left.depthFirstLog(cb);
     }
   }
+
 };
 
 /*

@@ -15,7 +15,7 @@ setPrototype.contains = function(item){
 };
 
 setPrototype.remove = function(item){
-  if(this.contains(item)){
+  if (this.contains(item)) {
     delete this._storage[item];
   }
 };

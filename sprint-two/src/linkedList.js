@@ -1,5 +1,7 @@
 var LinkedList = function(){
+  
   var list = {};
+
   list.head = null;
   list.tail = null;
 
@@ -7,18 +9,20 @@ var LinkedList = function(){
   // Complexity = O(1);
   list.addToTail = function(value){
     var node = Node(value);
-    if(list.tail){
+
+    if (list.tail) {
       list.tail.next = node;
       node.previous = list.tail;
     } else {
       list.head = node;
     }
+
     list.tail = node;
   };
 
   list.addToHead = function(value){
     var node = Node(value);
-    if(list.head){
+    if (list.head) {
       var previousHead = list.head;
       list.head = node;
       list.head.next = previousHead;
@@ -26,14 +30,17 @@ var LinkedList = function(){
       list.addToTail(value);
     }
   };
+
   // Complexty = O(1);
   list.removeHead = function(){
     var currentHead = list.head;
     var currentValue = null;
+    
     if (currentHead) {
       list.head = currentHead.next;
       currentValue = currentHead.value;
     }
+
     return currentValue;
   };
 
@@ -53,7 +60,8 @@ var LinkedList = function(){
   // Complexty = O(n);
   list.contains = function(target){
     var node = list.head;
-    while(true){
+
+    while (true) {
       if(node.value === target){
         return true;
       }
@@ -63,7 +71,10 @@ var LinkedList = function(){
       node = node.next;
     }
   };
+
+
   return list;
+
 };
 
 var Node = function(value){
